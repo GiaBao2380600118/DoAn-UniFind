@@ -245,3 +245,4 @@ namespace UniFind.API.Controllers
         public bool IsActive { get; set; } = true;
     }
 }
+

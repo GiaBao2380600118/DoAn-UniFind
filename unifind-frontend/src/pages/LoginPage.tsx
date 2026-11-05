@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { MapPin, LogIn, UserPlus, AlertCircle } from 'lucide-react';
+import { MapPin, LogIn, UserPlus, AlertCircle, Sparkles, Shield, BookOpen, GraduationCap, Loader2 } from 'lucide-react';
 import api from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
 import type { AuthResponse } from '../types';
@@ -17,8 +17,10 @@ export const LoginPage: React.FC = () => {
   const [studentStaffId, setStudentStaffId] = useState('');
 
   const [loading, setLoading] = useState(false);
+  const [quickLoading, setQuickLoading] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
+  // Normal Submit
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage(null);
@@ -54,19 +56,19 @@ export const LoginPage: React.FC = () => {
     }
   };
 
-  const handleFillDemo = (type: 'student' | 'admin' | 'staff') => {
-    if (type === 'admin') {
-      setEmail('admin@unifind.edu.vn');
-      setPassword('Password123@');
-    } else if (type === 'staff') {
-      setEmail('nam.nv@unifind.edu.vn');
-      setPassword('Password123@');
-    } else {
-      setEmail('bao.cng@unifind.edu.vn');
-      setPassword('Password123@');
-    }
-    setIsRegister(false);
+  // 1-Click Instant Demo Login (For Grading & Testing)
+  const handleInstantDemoLogin = async (role: 'student' | 'staff' | 'admin') => {
+    setQuickLoading(role);
     setErrorMessage(null);
+    try {
+      const res = await api.post<AuthResponse>('/auth/demo-login', { role });
+      login(res.data);
+      navigate('/');
+    } catch (err: any) {
+      setErrorMessage(err.response?.data?.message || 'Không thể đăng nhập tài khoản demo.');
+    } finally {
+      setQuickLoading(null);
+    }
   };
 
   return (
@@ -78,46 +80,83 @@ export const LoginPage: React.FC = () => {
             <MapPin className="w-6 h-6" />
           </div>
           <h2 className="text-2xl font-extrabold text-slate-900">
-            {isRegister ? 'Tạo tài khoản UniFind' : 'Chào mừng bạn trở lại'}
+            {isRegister ? 'Tạo tài khoản UniFind' : 'Đăng nhập UniFind'}
           </h2>
           <p className="text-xs text-slate-500">
             {isRegister
-              ? 'Đăng ký bằng email sinh viên trường để sử dụng dịch vụ'
-              : 'Đăng nhập để đăng bài và theo dõi đồ thất lạc'}
+              ? 'Đăng ký tài khoản sinh viên để sử dụng toàn bộ dịch vụ'
+              : 'Chọn đăng nhập nhanh 1-Click hoặc nhập tài khoản cá nhân'}
           </p>
         </div>
 
-        {/* Demo Accounts Quick Pill */}
+        {/* 1-CLICK INSTANT DEMO BUTTONS */}
         {!isRegister && (
-          <div className="p-3 bg-slate-50 rounded-2xl border border-slate-200/80 space-y-1.5 text-center">
-            <div className="text-[11px] font-semibold text-slate-500">
-              ⚡ Điền nhanh tài khoản demo kiểm thử:
+          <div className="p-4 bg-gradient-to-br from-indigo-50/80 to-blue-50/80 rounded-2xl border border-indigo-100 space-y-2.5">
+            <div className="flex items-center gap-1.5 text-xs font-bold text-indigo-900">
+              <Sparkles className="w-4 h-4 text-indigo-600" />
+              <span>Đăng nhập nhanh 1-Click để kiểm thử:</span>
             </div>
-            <div className="flex items-center justify-center gap-1.5 flex-wrap">
+
+            <div className="grid grid-cols-1 gap-2">
               <button
                 type="button"
-                onClick={() => handleFillDemo('student')}
-                className="px-2.5 py-1 text-xs bg-white border border-slate-200 rounded-lg hover:border-blue-500 hover:text-blue-600 font-medium transition"
+                disabled={!!quickLoading}
+                onClick={() => handleInstantDemoLogin('student')}
+                className="w-full flex items-center justify-between px-3.5 py-2.5 bg-white hover:bg-blue-50 border border-blue-200 rounded-xl text-xs font-semibold text-blue-900 shadow-sm transition hover:scale-[1.01]"
               >
-                Sinh viên (Bảo)
+                <div className="flex items-center gap-2">
+                  <GraduationCap className="w-4 h-4 text-blue-600" />
+                  <span>Sinh viên (Chu Nguyễn Gia Bảo)</span>
+                </div>
+                {quickLoading === 'student' ? (
+                  <Loader2 className="w-3.5 h-3.5 animate-spin text-blue-600" />
+                ) : (
+                  <span className="text-[10px] text-blue-500 font-bold">Vào ngay →</span>
+                )}
               </button>
+
               <button
                 type="button"
-                onClick={() => handleFillDemo('staff')}
-                className="px-2.5 py-1 text-xs bg-white border border-slate-200 rounded-lg hover:border-blue-500 hover:text-blue-600 font-medium transition"
+                disabled={!!quickLoading}
+                onClick={() => handleInstantDemoLogin('staff')}
+                className="w-full flex items-center justify-between px-3.5 py-2.5 bg-white hover:bg-emerald-50 border border-emerald-200 rounded-xl text-xs font-semibold text-emerald-900 shadow-sm transition hover:scale-[1.01]"
               >
-                Thủ thư (Staff)
+                <div className="flex items-center gap-2">
+                  <BookOpen className="w-4 h-4 text-emerald-600" />
+                  <span>Nhân viên / Thủ thư (Thầy Nam)</span>
+                </div>
+                {quickLoading === 'staff' ? (
+                  <Loader2 className="w-3.5 h-3.5 animate-spin text-emerald-600" />
+                ) : (
+                  <span className="text-[10px] text-emerald-600 font-bold">Duyệt đồ →</span>
+                )}
               </button>
+
               <button
                 type="button"
-                onClick={() => handleFillDemo('admin')}
-                className="px-2.5 py-1 text-xs bg-white border border-slate-200 rounded-lg hover:border-blue-500 hover:text-blue-600 font-medium transition"
+                disabled={!!quickLoading}
+                onClick={() => handleInstantDemoLogin('admin')}
+                className="w-full flex items-center justify-between px-3.5 py-2.5 bg-white hover:bg-purple-50 border border-purple-200 rounded-xl text-xs font-semibold text-purple-900 shadow-sm transition hover:scale-[1.01]"
               >
-                Admin
+                <div className="flex items-center gap-2">
+                  <Shield className="w-4 h-4 text-purple-600" />
+                  <span>Quản trị viên (Admin)</span>
+                </div>
+                {quickLoading === 'admin' ? (
+                  <Loader2 className="w-3.5 h-3.5 animate-spin text-purple-600" />
+                ) : (
+                  <span className="text-[10px] text-purple-600 font-bold">Quản trị →</span>
+                )}
               </button>
             </div>
           </div>
         )}
+
+        <div className="relative flex py-1 items-center">
+          <div className="flex-grow border-t border-slate-200"></div>
+          <span className="flex-shrink mx-3 text-[11px] font-semibold text-slate-400">HOẶC ĐĂNG NHẬP THƯỜNG</span>
+          <div className="flex-grow border-t border-slate-200"></div>
+        </div>
 
         {errorMessage && (
           <div className="p-3.5 bg-rose-50 border border-rose-200 rounded-xl flex items-center gap-2 text-rose-700 text-xs">
@@ -218,4 +257,3 @@ export const LoginPage: React.FC = () => {
     </div>
   );
 };
-

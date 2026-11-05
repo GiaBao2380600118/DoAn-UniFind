@@ -46,5 +46,23 @@ namespace UniFind.API.DTOs.Auth
         public string? StudentStaffId { get; set; }
         public string? AvatarUrl { get; set; }
     }
-}
 
+    public class DemoLoginDto
+    {
+        public string Role { get; set; } = "student";
+    }
+
+    public class UpdateProfileDto
+    {
+        public string? FullName { get; set; }
+        public string? Phone { get; set; }
+        public string? StudentStaffId { get; set; }
+        public string? AvatarUrl { get; set; }
+    }
+
+    public class ChangePasswordDto
+    {
+        public string CurrentPassword { get; set; } = string.Empty;
+        public string NewPassword { get; set; } = string.Empty;
+    }
+}
