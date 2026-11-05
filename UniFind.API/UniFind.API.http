@@ -1,0 +1,6 @@
+@UniFind.API_HostAddress = http://localhost:5031
+
+GET {{UniFind.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
