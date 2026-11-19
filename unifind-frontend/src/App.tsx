@@ -6,6 +6,7 @@ import { HomePage } from './pages/HomePage';
 import { ItemDetailPage } from './pages/ItemDetailPage';
 import { CreateItemPage } from './pages/CreateItemPage';
 import { LoginPage } from './pages/LoginPage';
+import { RegisterPage } from './pages/RegisterPage';
 import { MyItemsPage } from './pages/MyItemsPage';
 import { AdminPage } from './pages/AdminPage';
 
@@ -22,6 +23,7 @@ export const App: React.FC = () => {
               <Route path="/items/:id" element={<ItemDetailPage />} />
               <Route path="/create" element={<CreateItemPage />} />
               <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
               <Route path="/my-items" element={<MyItemsPage />} />
               <Route path="/admin" element={<AdminPage />} />
               <Route path="*" element={<Navigate to="/" replace />} />

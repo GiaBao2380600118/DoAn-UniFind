@@ -208,12 +208,20 @@ export const Navbar: React.FC = () => {
                 </button>
               </div>
             ) : (
-              <Link
-                to="/login"
-                className="text-sm font-semibold text-slate-700 hover:text-blue-600 px-4 py-2 rounded-xl hover:bg-slate-100 transition"
-              >
-                Đăng nhập
-              </Link>
+              <div className="flex items-center gap-2">
+                <Link
+                  to="/login"
+                  className="text-sm font-semibold text-slate-700 hover:text-blue-600 px-3 py-2 rounded-xl hover:bg-slate-100 transition"
+                >
+                  Đăng nhập
+                </Link>
+                <Link
+                  to="/register"
+                  className="text-sm font-semibold text-blue-600 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 px-3.5 py-2 rounded-xl transition"
+                >
+                  Đăng ký
+                </Link>
+              </div>
             )}
           </div>
 
@@ -281,13 +289,22 @@ export const Navbar: React.FC = () => {
                 </button>
               </div>
             ) : (
-              <Link
-                to="/login"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block text-center w-full bg-blue-600 text-white font-semibold py-2 rounded-xl"
-              >
-                Đăng nhập
-              </Link>
+              <div className="space-y-2">
+                <Link
+                  to="/login"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block text-center w-full bg-blue-600 text-white font-semibold py-2 rounded-xl"
+                >
+                  Đăng nhập
+                </Link>
+                <Link
+                  to="/register"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block text-center w-full border border-blue-600 text-blue-600 font-semibold py-2 rounded-xl"
+                >
+                  Đăng ký tài khoản mới
+                </Link>
+              </div>
             )}
           </div>
         </div>
