@@ -27,9 +27,13 @@ export const App: React.FC = () => {
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </main>
-          <footer className="border-t border-slate-200 bg-white py-6 mt-12 text-center text-xs text-slate-500">
+          <footer className="border-t border-slate-200 bg-white py-6 mt-12 text-center text-xs text-slate-500 space-y-1.5">
             <p>© 2026 UniFind - Hệ thống tìm kiếm và quản lý đồ thất lạc trong trường đại học.</p>
-            <p className="mt-1">Đồ án chuyên ngành Công nghệ phần mềm</p>
+            <p className="flex items-center justify-center gap-2 flex-wrap">
+              <span>Đồ án chuyên ngành Công nghệ phần mềm</span>
+              <span>•</span>
+              <span>Hotline hỗ trợ: <a href="tel:0905377495" className="font-bold text-blue-600 hover:text-blue-700 hover:underline">0905377495</a></span>
+            </p>
           </footer>
         </div>
       </BrowserRouter>
