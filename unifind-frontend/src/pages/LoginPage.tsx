@@ -57,7 +57,7 @@ export const LoginPage: React.FC = () => {
   };
 
   // 1-Click Instant Demo Login (For Grading & Testing)
-  const handleInstantDemoLogin = async (role: 'student' | 'staff' | 'admin') => {
+  const handleInstantDemoLogin = async (role: 'student' | 'staff' | 'lecturer' | 'admin') => {
     setQuickLoading(role);
     setErrorMessage(null);
     try {
@@ -112,6 +112,23 @@ export const LoginPage: React.FC = () => {
                   <Loader2 className="w-3.5 h-3.5 animate-spin text-blue-600" />
                 ) : (
                   <span className="text-[10px] text-blue-500 font-bold">Vào ngay →</span>
+                )}
+              </button>
+
+              <button
+                type="button"
+                disabled={!!quickLoading}
+                onClick={() => handleInstantDemoLogin('lecturer')}
+                className="w-full flex items-center justify-between px-3.5 py-2.5 bg-white hover:bg-amber-50 border border-amber-200 rounded-xl text-xs font-semibold text-amber-900 shadow-sm transition hover:scale-[1.01]"
+              >
+                <div className="flex items-center gap-2">
+                  <BookOpen className="w-4 h-4 text-amber-600" />
+                  <span>Giảng viên (TS. Trần Hoàng Quân)</span>
+                </div>
+                {quickLoading === 'lecturer' ? (
+                  <Loader2 className="w-3.5 h-3.5 animate-spin text-amber-600" />
+                ) : (
+                  <span className="text-[10px] text-amber-600 font-bold">Vào ngay →</span>
                 )}
               </button>
 
