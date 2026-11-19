@@ -84,12 +84,9 @@ Mật khẩu chung cho tất cả tài khoản mẫu là: **`Password123@`**
 
 | Vai trò (Role) | Họ và tên | Email đăng nhập | Quyền hạn |
 | :--- | :--- | :--- | :--- |
-| **Admin** | Quản Trị Viên Hệ Thống | `admin@unifind.edu.vn` | Toàn quyền kiểm duyệt, xem thống kê |
-| **Staff** | Thầy Nguyễn Văn Nam (Thủ thư) | `nam.nv@unifind.edu.vn` | Tiếp nhận đồ lưu kho, duyệt Claim, lập biên bản bàn giao |
-| **Staff** | Cô Lê Thị Bích (Phòng CTSV) | `bich.lt@unifind.edu.vn` | Quản lý đồ thất lạc cơ sở |
-| **Student** | Chu Nguyễn Gia Bảo | `bao.cng@unifind.edu.vn` | Đăng tin, tìm kiếm, gửi yêu cầu nhận đồ |
-| **Student** | Nguyễn Văn An | `an.nv@unifind.edu.vn` | Đăng tin mất ví tại Thư viện |
-| **Student** | Trần Thị Mai | `mai.tt@unifind.edu.vn` | Đăng tin nhặt được ví |
+| **Admin** | Quản Trị Viên Hệ Thống | `admin@unifind.edu.vn` | Toàn quyền kiểm duyệt, xem thống kê, quản lý người dùng |
+| **Lecturer** | Thầy Võ Minh Quân | `quan.vm@unifind.edu.vn` | Giảng viên, đăng tin, tìm kiếm tài sản |
+| **Student** | Chu Nguyễn Gia Bảo | `bao.cng@unifind.edu.vn` | Sinh viên, đăng tin mất đồ/nhặt đồ, gửi Claim nhận lại tài sản |
 
 *(Trên giao diện trang Login `/login` có sẵn 3 nút bấm điền nhanh tài khoản giúp buổi thuyết trình/bảo vệ diễn ra nhanh chóng).*
 

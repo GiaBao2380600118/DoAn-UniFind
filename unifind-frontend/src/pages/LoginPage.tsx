@@ -123,29 +123,12 @@ export const LoginPage: React.FC = () => {
               >
                 <div className="flex items-center gap-2">
                   <BookOpen className="w-4 h-4 text-amber-600" />
-                  <span>Giảng viên (TS. Trần Hoàng Quân)</span>
+                  <span>Giảng viên (Thầy Võ Minh Quân)</span>
                 </div>
                 {quickLoading === 'lecturer' ? (
                   <Loader2 className="w-3.5 h-3.5 animate-spin text-amber-600" />
                 ) : (
                   <span className="text-[10px] text-amber-600 font-bold">Vào ngay →</span>
-                )}
-              </button>
-
-              <button
-                type="button"
-                disabled={!!quickLoading}
-                onClick={() => handleInstantDemoLogin('staff')}
-                className="w-full flex items-center justify-between px-3.5 py-2.5 bg-white hover:bg-emerald-50 border border-emerald-200 rounded-xl text-xs font-semibold text-emerald-900 shadow-sm transition hover:scale-[1.01]"
-              >
-                <div className="flex items-center gap-2">
-                  <BookOpen className="w-4 h-4 text-emerald-600" />
-                  <span>Nhân viên / Thủ thư (Thầy Nam)</span>
-                </div>
-                {quickLoading === 'staff' ? (
-                  <Loader2 className="w-3.5 h-3.5 animate-spin text-emerald-600" />
-                ) : (
-                  <span className="text-[10px] text-emerald-600 font-bold">Duyệt đồ →</span>
                 )}
               </button>
 

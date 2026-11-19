@@ -228,9 +228,8 @@ GO
 -- 2. Insert Users (Password hash giả lập 'Password123@' đã mã hóa BCrypt)
 INSERT INTO dbo.Users (FullName, Email, PasswordHash, RoleID, Phone, StudentStaffId) VALUES
 (N'Quản Trị Viên Hệ Thống', 'admin@unifind.edu.vn', '$2a$11$q6kE71pU2/rL3QpY5T0hOeaq3YV6c8gI4Z7gA0p9C1kP8aZ5y4H4q', 1, '0901000001', 'AD001'),
-(N'Thầy Nguyễn Văn Nam (QL Thư viện)', 'nam.nv@unifind.edu.vn', '$2a$11$q6kE71pU2/rL3QpY5T0hOeaq3YV6c8gI4Z7gA0p9C1kP8aZ5y4H4q', 2, '0902000002', 'ST001'),
-(N'Cô Lê Thị Bích (Phòng CTSV)', 'bich.lt@unifind.edu.vn', '$2a$11$q6kE71pU2/rL3QpY5T0hOeaq3YV6c8gI4Z7gA0p9C1kP8aZ5y4H4q', 2, '0902000003', 'ST002'),
-(N'TS. Trần Hoàng Quân', 'quan.th@unifind.edu.vn', '$2a$11$q6kE71pU2/rL3QpY5T0hOeaq3YV6c8gI4Z7gA0p9C1kP8aZ5y4H4q', 3, '0903000001', 'GV001'),
+(N'Cô Lê Thị Bích (Phòng CTSV)', 'bich.lt@unifind.edu.vn', '$2a$11$q6kE71pU2/rL3QpY5T0hOeaq3YV6c8gI4Z7gA0p9C1kP8aZ5y4H4q', 2, '0902000003', 'ST001'),
+(N'Thầy Võ Minh Quân', 'quan.vm@unifind.edu.vn', '$2a$11$q6kE71pU2/rL3QpY5T0hOeaq3YV6c8gI4Z7gA0p9C1kP8aZ5y4H4q', 3, '0903000001', 'GV001'),
 (N'Chu Nguyễn Gia Bảo', 'bao.cng@unifind.edu.vn', '$2a$11$q6kE71pU2/rL3QpY5T0hOeaq3YV6c8gI4Z7gA0p9C1kP8aZ5y4H4q', 4, '0904000001', 'SV202401'),
 (N'Nguyễn Văn An', 'an.nv@unifind.edu.vn', '$2a$11$q6kE71pU2/rL3QpY5T0hOeaq3YV6c8gI4Z7gA0p9C1kP8aZ5y4H4q', 4, '0904000002', 'SV202402'),
 (N'Trần Thị Mai', 'mai.tt@unifind.edu.vn', '$2a$11$q6kE71pU2/rL3QpY5T0hOeaq3YV6c8gI4Z7gA0p9C1kP8aZ5y4H4q', 4, '0904000003', 'SV202403'),
@@ -284,13 +283,13 @@ VALUES (
     'Found', '2026-11-02 17:00:00', 'VerifyingClaim', 'HandedToOffice', N'Tủ đồ thất lạc Thư viện Tầng 1 - Ngăn A03'
 );
 
--- Bài 3: Giảng viên Quân để quên máy tính cầm tay
+-- Bài 3: Giảng viên để quên máy tính cầm tay
 INSERT INTO dbo.Items (UserID, CategoryID, LocationID, Title, Description, PrivateDescription, ItemType, LostFoundDate, Status, CustodyType)
 VALUES (
-    4, 8, 4,
+    3, 8, 4,
     N'Quên máy tính Casio fx-580VN X tại bàn giáo viên phòng máy B302',
     N'Sau giờ dạy tiết 7-9 ngày thứ Hai, tôi có để quên một máy tính Casio màu đen trên bàn giáo viên phòng B302.',
-    N'Mặt sau máy có dán sticker hình logo trường và viết tắt chữ GV.THQ.',
+    N'Mặt sau máy có dán sticker hình logo trường và viết tắt chữ GV.VMQ.',
     'Lost', '2026-11-01 16:45:00', 'Approved_Searching', 'SelfRetained'
 );
 

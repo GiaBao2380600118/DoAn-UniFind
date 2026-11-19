@@ -105,17 +105,17 @@ namespace UniFind.API.Controllers
                     targetRoleName = "Admin";
                     roleId = 1;
                     break;
-                case "staff":
-                    targetEmail = "nam.nv@unifind.edu.vn";
-                    targetName = "Thầy Nguyễn Văn Nam (QL Thư viện)";
-                    targetRoleName = "Staff";
-                    roleId = 2;
-                    break;
                 case "lecturer":
-                    targetEmail = "quan.th@unifind.edu.vn";
-                    targetName = "TS. Trần Hoàng Quân";
+                    targetEmail = "quan.vm@unifind.edu.vn";
+                    targetName = "Thầy Võ Minh Quân";
                     targetRoleName = "Lecturer";
                     roleId = 3;
+                    break;
+                case "staff":
+                    targetEmail = "bich.lt@unifind.edu.vn";
+                    targetName = "Cô Lê Thị Bích (Phòng CTSV)";
+                    targetRoleName = "Staff";
+                    roleId = 2;
                     break;
                 default:
                     targetEmail = "bao.cng@unifind.edu.vn";
